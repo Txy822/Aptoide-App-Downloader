@@ -2,6 +2,7 @@ package com.tes.apps.development.aptoideappdownloader.data.remote
 
 import com.tes.apps.development.aptoideappdownloader.data.remote.dto.AppInfoDto
 import com.tes.apps.development.aptoideappdownloader.data.remote.dto.AppsListDto
+import com.tes.apps.development.aptoideappdownloader.data.remote.dto.AptoideResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,7 +12,7 @@ interface AptoideApi {
      */
     @GET(END)
     suspend fun getAppsList(
-    ): List<AppInfoDto>
+    ): AptoideResponse
 
     /**
      * api base url and end point as constant

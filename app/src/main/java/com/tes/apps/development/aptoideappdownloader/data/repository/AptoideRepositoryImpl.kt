@@ -19,7 +19,7 @@ class AptoideRepositoryImpl @Inject constructor(
         return flow {
             emit(Resource.Loading(true))
             val remoteListings = try {
-                api.getAppsList()
+                api.getAppsList().responses.listApps.datasets.all.data.list
             } catch (e: IOException) {
                 e.printStackTrace()
                 emit(Resource.Error("Couldn't load data"))
@@ -31,7 +31,8 @@ class AptoideRepositoryImpl @Inject constructor(
             }
 
             remoteListings?.let { listings ->
-                emit(Resource.Success(data = listings.map { it.toAppInfo() }))
+                val list=listings.map { it.toAppInfo()}
+                emit(Resource.Success(list))
                 emit(Resource.Loading(false))
             }
         }
