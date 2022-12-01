@@ -1,7 +1,7 @@
 package com.tes.apps.development.aptoideappdownloader.domain.model
 
 import com.google.gson.annotations.SerializedName
-
+//plain kotlin class to show in the ui which is independant of data layer
 data class AppInfo(
     val added: String? = "",
     val downloads: Long? = 0,

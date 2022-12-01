@@ -2,7 +2,7 @@ package com.tes.apps.development.aptoideappdownloader.data.remote.dto
 
 
 import com.google.gson.annotations.SerializedName
-
+//object directly represent the Json  data we get from api
 data class AppInfoDto (
     @SerializedName("added")
     val added: String = "",

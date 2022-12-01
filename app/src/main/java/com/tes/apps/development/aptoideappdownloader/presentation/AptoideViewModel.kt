@@ -19,11 +19,8 @@ class AptoideViewModel @Inject constructor(
     //state has ShowListingState type here
     var state by mutableStateOf(AptoideState())
 
-    //cancelable background job for searching
-    private var searchJob: Job? = null
-
     init {
-        //to load from remote for the first time
+        //to load initially for the first time
         getAppList()
     }
 
@@ -39,7 +36,7 @@ class AptoideViewModel @Inject constructor(
                     when (result) {
                         is Resource.Success -> {
                             result.data?.let { listings ->
-                                state = state.copy( // copy of  current state so that we can change the listing
+                                state = state.copy( // copy of  current state so that we can change the listing that way we can still keep immutable state  without having var field which is helpful in multi-threading so that we don't get race condition
                                     apps = listings
                                 )
                             }
