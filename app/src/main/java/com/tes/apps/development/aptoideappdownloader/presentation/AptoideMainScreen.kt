@@ -68,7 +68,7 @@ fun AptoideMainScreen(
         ) {
             Text(text = "Editors Choice", style = TextStyle(color = Color.Black, fontSize = 16.sp))
             Spacer(Modifier.weight(1f))
-            Text(text = "More", style = TextStyle(color = Color.Red, fontSize = 16.sp))
+            Text(text = "More", style = TextStyle(color = Color.Blue, fontSize = 16.sp))
         }
 
         //Spacer(modifier = Modifier.padding(vertical = 2.dp))
@@ -104,7 +104,7 @@ fun AptoideMainScreen(
         ) {
             Text(text = "Local top apps", style = TextStyle(color = Color.Black, fontSize = 16.sp))
             Spacer(Modifier.weight(1f))
-            Text(text = "More", style = TextStyle(color = Color.Red, fontSize = 16.sp))
+            Text(text = "More", style = TextStyle(color = Color.Blue, fontSize = 16.sp))
         }
         LazyRow(
             modifier = Modifier
