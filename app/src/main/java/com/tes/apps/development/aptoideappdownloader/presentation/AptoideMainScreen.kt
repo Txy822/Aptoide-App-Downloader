@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,7 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
+import com.tes.apps.development.aptoideappdownloader.R
 import com.tes.apps.development.aptoideappdownloader.domain.model.AppInfo
 import com.tes.apps.development.aptoideappdownloader.R.drawable as AppIcon
 import com.tes.apps.development.aptoideappdownloader.R.string as AppText
@@ -36,7 +39,7 @@ import com.tes.apps.development.aptoideappdownloader.R.string as AppText
 fun AptoideMainScreen(
 ) {
 
-    val navigator: NavController
+    val navController: NavController= rememberNavController()
     val viewModel: AptoideViewModel = hiltViewModel()
     val state = viewModel.state
 
@@ -54,7 +57,7 @@ fun AptoideMainScreen(
         ActionToolbar(
             title = AppText.title,
             modifier = Modifier.wrapContentSize(Alignment.TopEnd),
-            endActionIcon = AppIcon.ic_baseline_account_circle_24,
+            endActionIcon =AppIcon.ic_baseline_account_circle_24,
             endAction = { }
         )
 
@@ -66,7 +69,9 @@ fun AptoideMainScreen(
                 .padding(12.dp),
             horizontalArrangement = Arrangement.End
         ) {
-            Text(text = "Editors Choice", style = TextStyle(color = Color.Black, fontSize = 16.sp))
+            Text(text = "Editors Choice",
+                style = TextStyle(color = Color.Black, fontSize = 16.sp)
+            )
             Spacer(Modifier.weight(1f))
             Text(text = "More", style = TextStyle(color = Color.Blue, fontSize = 16.sp))
         }
@@ -180,12 +185,13 @@ fun ActionToolbar(
     endAction: () -> Unit
 ) {
     TopAppBar(
-        title = { Text(stringResource(title)) },
+        title = { Text(stringResource(title),
+        color = Color.White) },
         backgroundColor = toolbarColor(),
         actions = {
             Box(modifier) {
                 IconButton(onClick = endAction) {
-                    Icon(painter = painterResource(endActionIcon), contentDescription = "Action")
+                    Icon(painter = painterResource(endActionIcon), contentDescription = "Action to Profile Screen")
                 }
             }
         }
@@ -245,7 +251,7 @@ fun ImageCard(
                     Text(text = title, style = TextStyle(color = Color.White, fontSize = 20.sp))
 
                     Row() {
-                        Icon(imageVector = Icons.Outlined.Star, contentDescription = null, tint = Color.White)
+                        Icon(imageVector = Icons.Outlined.Star, contentDescription ="Rating", tint = Color.White)
                         Text(
                             text = rating.toString(),
                             style = TextStyle(color = Color.White, fontSize = 20.sp)
@@ -289,7 +295,7 @@ fun SmallImageCard(
             ) {
                 Text(text = contentDescription, style = TextStyle(color = Color.Black, fontSize = 16.sp))
                 Row() {
-                    Icon(imageVector = Icons.Outlined.Star, contentDescription = null, tint = Color.Black)
+                    Icon(imageVector = Icons.Outlined.Star, contentDescription = "Rating", tint = Color.Black)
                     Text(
                         text = rating.toString(),
                         style = TextStyle(color = Color.Black, fontSize = 16.sp)
